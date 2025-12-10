@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كراسة المواصفات الفنية والتنظيمية - منصة الخدمات المالية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+            --sidebar-bg: #f8fafc;
+            --border-color: #e5e7eb;
+            --code-bg: #1e293b;
+            --code-text: #e2e8f0;
+            --warning-bg: #fef3c7;
+            --warning-text: #92400e;
+            --success-bg: #d1fae5;
+            --success-text: #065f46;
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            direction: rtl;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar-bg);
+            border-left: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.05);
+        }
+
+        .sidebar h2 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            font-weight: 700;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar nav ul li a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .sidebar nav ul li a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .sidebar nav ul li a.active {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+                box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+                padding: 1.5rem 1rem;
+            }
+
+            .sidebar h2 {
+                font-size: 1.3rem;
+                padding: 1rem 0.5rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                background: var(--primary-color);
+                color: white;
+                border-radius: 8px;
+                border: none;
+                margin-right: -0.5rem;
+                margin-left: -0.5rem;
+            }
+
+            .sidebar nav ul {
+                padding: 0 0.5rem;
+            }
+
+            .sidebar nav ul li {
+                margin-bottom: 0.75rem;
+            }
+
+            .sidebar nav ul li a {
+                padding: 1rem 1.25rem;
+                font-size: 1rem;
+                border-right: 4px solid transparent;
+                border-radius: 8px;
+                background: #ffffff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+            }
+
+            .sidebar nav ul li a:hover {
+                border-right-color: var(--primary-color);
+                background: #eff6ff;
+                color: var(--primary-color);
+                transform: translateX(5px);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            }
+
+            .sidebar nav ul li a.active {
+                background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+                color: white;
+                border-right-color: var(--accent-color);
+                transform: translateX(5px);
+                box-shadow: 0 3px 8px rgba(30, 58, 138, 0.3);
+                font-weight: 700;
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 3rem 4rem;
+            max-width: 1200px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        .header .meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 2rem;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 700;
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section h4 {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        .section ul, .section ol {
+            margin-right: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section ul li, .section ol li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 0.95rem;
+        }
+
+        table thead {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        table th {
+            padding: 1rem;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            direction: ltr;
+            text-align: left;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-right: 4px solid var(--accent-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: var(--warning-bg);
+            border-radius: 6px;
+            font-style: italic;
+        }
+
+        blockquote p {
+            margin: 0;
+            color: var(--warning-text);
+        }
+
+        /* Boxes and Cards */
+        .info-box {
+            background: #eff6ff;
+            border-right: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box {
+            background: var(--warning-bg);
+            border-right: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .success-box {
+            background: var(--success-bg);
+            border-right: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        /* Diagrams */
+        .diagram {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 2px solid var(--border-color);
+            color: #6b7280;
+        }
+
+        /* Sidebar overlay for mobile */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                width: 300px;
+                max-width: 85vw;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+                z-index: 100;
+                border-left: none;
+                border-right: 1px solid var(--border-color);
+                right: auto;
+                left: 0;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-right: 0;
+                padding: 2rem 1.5rem;
+            }
+
+            .menu-toggle {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                position: fixed !important;
+                top: 1rem;
+                left: 1rem;
+                z-index: 1000 !important;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 0;
+                width: 44px;
+                height: 44px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1.5rem;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                transition: all 0.3s ease;
+            }
+
+            .menu-toggle span {
+                display: block;
+                line-height: 1;
+                font-size: 1.5rem;
+            }
+
+            .menu-toggle:hover {
+                background: var(--secondary-color);
+                transform: scale(1.05);
+            }
+
+            .menu-toggle:active {
+                transform: scale(0.95);
+            }
+
+            .print-btn {
+                top: 1rem;
+                right: 1rem;
+                left: auto;
+                z-index: 1000 !important;
+                position: fixed !important;
+                padding: 0.5rem 0.75rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding-top: 2.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .section {
+                margin-bottom: 3rem;
+            }
+
+            .section h2 {
+                font-size: 1.6rem;
+            }
+
+            .section h3 {
+                font-size: 1.3rem;
+            }
+
+            .section h4 {
+                font-size: 1.1rem;
+            }
+
+            .section p, .section ul li, .section ol li {
+                font-size: 0.95rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            table th, table td {
+                padding: 0.6rem 0.5rem;
+            }
+
+            pre {
+                font-size: 0.75rem;
+                padding: 1rem;
+                overflow-x: auto;
+            }
+
+            .diagram {
+                padding: 1rem;
+            }
+
+            .table-wrapper {
+                margin: 1.5rem 0;
+            }
+
+            .info-box, .warning-box, .success-box {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 280px;
+                max-width: 90vw;
+            }
+
+            .sidebar h2 {
+                font-size: 1.2rem;
+                padding: 0.875rem 0.5rem;
+            }
+
+            .sidebar nav ul li a {
+                padding: 0.875rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .main-content {
+                padding: 1rem 0.75rem;
+            }
+
+            .section h2 {
+                font-size: 1.4rem;
+            }
+
+            .section h3 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.75rem;
+                display: block;
+                width: 100%;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table tbody {
+                display: block;
+                width: 100%;
+            }
+
+            table tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+                padding: 0.5rem;
+                background: white;
+            }
+
+            table td {
+                display: block;
+                text-align: right;
+                padding: 0.5rem 0;
+                border: none;
+                border-bottom: 1px solid #f3f4f6;
+            }
+
+            table td:last-child {
+                border-bottom: none;
+            }
+
+            table td:before {
+                content: attr(data-label) ": ";
+                font-weight: 700;
+                color: var(--primary-color);
+                display: inline-block;
+                margin-left: 0.5rem;
+            }
+
+            table th, table td {
+                padding: 0.5rem 0.4rem;
+            }
+
+            pre {
+                font-size: 0.7rem;
+                padding: 0.75rem;
+            }
+
+            .scroll-top {
+                width: 45px;
+                height: 45px;
+                bottom: 1rem;
+                left: 1rem;
+            }
+
+            .menu-toggle {
+                padding: 0.6rem 0.875rem;
+                font-size: 1.1rem;
+            }
+
+            .print-btn {
+                padding: 0.6rem 0.875rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: flex !important;
+            }
+        }
+
+        .menu-toggle span {
+            display: block;
+            line-height: 1;
+            font-weight: normal;
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            z-index: 200;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
+            white-space: nowrap;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .print-icon {
+            display: inline-block;
+        }
+
+        .print-text {
+            display: inline-block;
+        }
+
+        .print-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                width: 36px;
+                height: 36px;
+                top: 1rem;
+                left: 1rem;
+                z-index: 1000 !important;
+                position: fixed !important;
+            }
+
+            .menu-toggle span {
+                font-size: 1.1rem;
+            }
+
+            .print-btn {
+                top: 1rem;
+                right: 1rem;
+                left: auto;
+                padding: 0.4rem 0.5rem;
+                font-size: 0.75rem;
+                min-width: auto;
+                z-index: 1000 !important;
+                position: fixed !important;
+            }
+
+            .print-text {
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex !important;
+                width: 34px;
+                height: 34px;
+                padding: 0;
+                top: 1rem;
+                left: 1rem;
+                z-index: 1000 !important;
+                position: fixed !important;
+            }
+
+            .menu-toggle span {
+                font-size: 1rem;
+                display: block !important;
+            }
+
+            .print-btn {
+                top: 1rem;
+                right: 1rem;
+                left: auto;
+                padding: 0.35rem;
+                font-size: 0.7rem;
+                min-width: 34px;
+                width: 34px;
+                height: 34px;
+                justify-content: center;
+                gap: 0;
+                z-index: 1000 !important;
+                position: fixed !important;
+            }
+
+            .print-text {
+                display: none;
+            }
+
+            .print-icon {
+                font-size: 1rem;
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-toggle {
+                display: flex !important;
+                width: 36px;
+                height: 36px;
+                padding: 0;
+                top: 0.5rem;
+                left: 0.5rem;
+                z-index: 1000 !important;
+                position: fixed !important;
+            }
+
+            .menu-toggle span {
+                font-size: 1.1rem;
+                display: block !important;
+            }
+
+            .print-btn {
+                top: 0.5rem;
+                right: 0.5rem;
+                left: auto;
+                padding: 0;
+                font-size: 0.65rem;
+                min-width: 36px;
+                width: 36px;
+                height: 36px;
+                justify-content: center;
+                gap: 0;
+                z-index: 1000 !important;
+                position: fixed !important;
+            }
+
+            .print-text {
+                display: none;
+            }
+
+            .print-icon {
+                font-size: 1rem;
+                display: block;
+            }
+
+            .header {
+                padding-top: 3rem;
+                margin-top: 0;
+            }
+        }
+
+        /* iPhone specific fixes */
+        @media (max-width: 414px) {
+            .menu-toggle {
+                display: flex !important;
+                width: 38px;
+                height: 38px;
+                top: 0.5rem;
+                left: 0.5rem;
+                z-index: 1000 !important;
+                position: fixed !important;
+                background: var(--primary-color) !important;
+            }
+
+            .menu-toggle span {
+                font-size: 1.2rem;
+                display: block !important;
+                line-height: 1;
+            }
+
+            .print-btn {
+                top: 0.5rem;
+                right: 0.5rem;
+                width: 38px;
+                height: 38px;
+                z-index: 1000 !important;
+                position: fixed !important;
+            }
+
+            .print-icon {
+                font-size: 1.1rem;
+            }
+
+            .header {
+                padding-top: 3.5rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .menu-toggle {
+                width: 36px;
+                height: 36px;
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+
+            .menu-toggle span {
+                font-size: 1.1rem;
+            }
+
+            .print-btn {
+                width: 36px;
+                height: 36px;
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+
+            .print-icon {
+                font-size: 1rem;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Print styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .sidebar, .menu-toggle, .scroll-top, .print-btn {
+                display: none !important;
+            }
+
+            .container {
+                display: block;
+            }
+
+            .main-content {
+                margin-right: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .header {
+                page-break-after: avoid;
+                margin-bottom: 2rem;
+            }
+
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 2rem;
+            }
+
+            .section h2 {
+                page-break-after: avoid;
+                border-bottom: 2px solid var(--primary-color);
+            }
+
+            .section h3 {
+                page-break-after: avoid;
+            }
+
+            table {
+                page-break-inside: auto;
+            }
+
+            table tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            table thead {
+                display: table-header-group;
+            }
+
+            table tfoot {
+                display: table-footer-group;
+            }
+
+            .diagram {
+                page-break-inside: avoid;
+            }
+
+            pre {
+                page-break-inside: avoid;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+
+            .table-wrapper {
+                overflow: visible;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+
+            .header {
+                border-bottom: 3px solid var(--primary-color);
+            }
+
+            .footer {
+                margin-top: 3rem;
+                padding-top: 2rem;
+            }
+
+            /* Ensure proper spacing in print */
+            .section + .section {
+                margin-top: 2rem;
+            }
+
+            /* Better table printing */
+            table {
+                border-collapse: collapse;
+            }
+
+            table th {
+                background: var(--primary-color) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            table td {
+                border: 1px solid #e5e7eb;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <button class="menu-toggle" onclick="toggleSidebar()" title="فتح القائمة" aria-label="فتح القائمة">
+        <span style="display: block; line-height: 1;">☰</span>
+    </button>
+    <button class="print-btn" onclick="printDocument()" title="طباعة التوثيق">
+        <span class="print-icon">🖨️</span>
+        <span class="print-text">طباعة</span>
+    </button>
+    
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <h2>جدول المحتويات</h2>
+            <nav>
+                <ul>
+                    <li><a href="#الملخص-التنفيذي">الملخص التنفيذي</a></li>
+                    <li><a href="#تمهيد-ومقدمة-المشروع">تمهيد ومقدمة المشروع</a></li>
+                    <li><a href="#أهداف-المشروع">أهداف المشروع</a></li>
+                    <li><a href="#النتائج-المرجوة">النتائج المرجوة</a></li>
+                    <li><a href="#الفئات-المستهدفة">الفئات المستهدفة</a></li>
+                    <li><a href="#الخدمات-والميزات">الخدمات والميزات</a></li>
+                    <li><a href="#الإطار-القانوني-والامتثال-التنظيمي">الإطار القانوني والامتثال التنظيمي</a></li>
+                    <li><a href="#الشراكات-الاستراتيجية">الشراكات الاستراتيجية</a></li>
+                    <li><a href="#المتطلبات-التنظيمية-للانطلاق">المتطلبات التنظيمية للانطلاق</a></li>
+                    <li><a href="#الهيكل-التشغيلي">الهيكل التشغيلي</a></li>
+                    <li><a href="#إدارة-المخاطر">إدارة المخاطر</a></li>
+                    <li><a href="#خارطة-الطريق">خارطة الطريق</a></li>
+                    <li><a href="#الملاحق">الملاحق</a></li>
+                    <li><a href="#التوصيات-النهائية">التوصيات النهائية</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>كراسة المواصفات الفنية والتنظيمية</h1>
+                <div class="subtitle">منصة الخدمات المالية للعمالة الوافدة والشركات</div>
+                <div class="meta">
+                    <span><strong>الإصدار:</strong> 1.0</span>
+                    <span><strong>التاريخ:</strong> ديسمبر 2025</span>
+                    <span><strong>الحالة:</strong> مسودة أولية للمراجعة</span>
+                </div>
+            </header>
+
+            <section id="الملخص-التنفيذي" class="section">
+                <h2>الملخص التنفيذي</h2>
+                <p>تمثل هذه الوثيقة كراسة المواصفات الفنية والتنظيمية لإنشاء منصة رقمية متكاملة للخدمات المالية تستهدف شريحة العمالة الوافدة في ليبيا والشركات المُشغِّلة لهم، إضافة إلى المواطنين الليبيين. تهدف المنصة إلى تحويل وتطوير آلية صرف الأجور والتحويلات المالية من النظام التقليدي القائم على مكاتب الصرافة إلى نظام رقمي آمن وفعّال ومتوافق مع الأطر القانونية والتنظيمية في الدولة الليبية.</p>
+                
+                <h3>المشكلة الحالية</h3>
+                <ul>
+                    <li>اعتماد العمالة الوافدة على مكاتب التحويل التقليدية لاستلام أجورهم</li>
+                    <li>ارتفاع تكاليف التحويلات ورسوم الخدمات</li>
+                    <li>محدودية ساعات العمل وصعوبة الوصول الجغرافي</li>
+                    <li>غياب الشفافية في أسعار الصرف والعمولات</li>
+                    <li>مخاطر أمنية مرتبطة بحمل النقد</li>
+                    <li>صعوبة تتبع التحويلات والتوثيق المالي</li>
+                </ul>
+
+                <h3>الحل المقترح</h3>
+                <p>منصة رقمية شاملة توفر:</p>
+                <ul>
+                    <li>محفظة إلكترونية للعمال والشركات</li>
+                    <li>نظام تحويل أجور آلي ومباشر</li>
+                    <li>خدمات الكروت مسبقة الدفع</li>
+                    <li>تكامل مع خدمات العملات الرقمية المستقرة (USDT)</li>
+                    <li>بوابة للشركات لإدارة رواتب موظفيها</li>
+                </ul>
+            </section>
+
+            <section id="تمهيد-ومقدمة-المشروع" class="section">
+                <h2>تمهيد ومقدمة المشروع</h2>
+                
+                <h3>السياق العام</h3>
+                <p>تشهد ليبيا تواجداً كبيراً للعمالة الوافدة من مختلف الجنسيات، خاصة من دول شمال أفريقيا وجنوب الصحراء وآسيا، الذين يعملون في قطاعات متعددة تشمل البناء والتشييد، الخدمات، التجارة، والصناعة. يواجه هؤلاء العمال تحديات جوهرية في إدارة شؤونهم المالية، أبرزها:</p>
+                <ol>
+                    <li><strong>التحويلات المالية الدولية:</strong> الاعتماد على مكاتب صرافة تقليدية بأسعار متفاوتة وغير شفافة</li>
+                    <li><strong>استلام الأجور:</strong> التردد الدوري على نقاط صرف محددة في أوقات معينة</li>
+                    <li><strong>الادخار والتخزين الآمن للأموال:</strong> غياب حلول مصرفية ميسرة</li>
+                    <li><strong>الوصول للخدمات المالية الحديثة:</strong> محدودية الخيارات المتاحة</li>
+                </ol>
+
+                <h3>رؤية المشروع</h3>
+                <p>إنشاء منظومة مالية رقمية شاملة تُمكّن العمالة الوافدة والمواطنين من الوصول السهل والآمن للخدمات المالية، مع ضمان الامتثال الكامل للقوانين والتشريعات الليبية، وتعزيز الشمول المالي في المجتمع.</p>
+
+                <h3>رسالة المشروع</h3>
+                <p>تقديم خدمات مالية رقمية موثوقة، شفافة، وميسورة التكلفة للعمالة الوافدة والشركات والمواطنين، مع الالتزام بأعلى معايير الأمان والامتثال التنظيمي.</p>
+            </section>
+
+            <section id="أهداف-المشروع" class="section">
+                <h2>أهداف المشروع</h2>
+                
+                <h3>الأهداف الاستراتيجية</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الهدف</th>
+                                <th>الوصف</th>
+                                <th>مؤشر القياس</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>الشمول المالي</strong></td>
+                                <td>توفير خدمات مالية رقمية لشريحة غير مخدومة مصرفياً</td>
+                                <td>نسبة التغطية والوصول</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الكفاءة التشغيلية</strong></td>
+                                <td>تقليل وقت وتكلفة التحويلات المالية</td>
+                                <td>متوسط وقت التحويل والتكلفة</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الأمان والموثوقية</strong></td>
+                                <td>ضمان سلامة المعاملات وحماية الأموال</td>
+                                <td>معدل الحوادث الأمنية</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الامتثال التنظيمي</strong></td>
+                                <td>العمل ضمن الإطار القانوني الليبي</td>
+                                <td>التقارير الرقابية</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>الأهداف التشغيلية</h3>
+                <ol>
+                    <li><strong>المرحلة الأولى (السنة الأولى):</strong>
+                        <ul>
+                            <li>الحصول على التراخيص والموافقات اللازمة</li>
+                            <li>إطلاق التطبيق بالخدمات الأساسية (المحفظة الإلكترونية + التحويلات المحلية)</li>
+                            <li>ضم 10,000 مستخدم نشط</li>
+                            <li>التعاقد مع 50 شركة على الأقل</li>
+                        </ul>
+                    </li>
+                    <li><strong>المرحلة الثانية (السنة الثانية):</strong>
+                        <ul>
+                            <li>إطلاق خدمات الكروت مسبقة الدفع</li>
+                            <li>التوسع في التحويلات الدولية</li>
+                            <li>ضم 50,000 مستخدم نشط</li>
+                            <li>التعاقد مع 200 شركة</li>
+                        </ul>
+                    </li>
+                    <li><strong>المرحلة الثالثة (السنة الثالثة):</strong>
+                        <ul>
+                            <li>إدراج خدمات العملات الرقمية المستقرة (بموافقة الجهات المختصة)</li>
+                            <li>التوسع الإقليمي</li>
+                            <li>ضم 150,000 مستخدم نشط</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+
+            <section id="النتائج-المرجوة" class="section">
+                <h2>النتائج المرجوة</h2>
+                
+                <h3>على مستوى المستخدمين (العمالة الوافدة والمواطنين)</h3>
+                <ul>
+                    <li><strong>تقليل التكاليف:</strong> خفض رسوم التحويلات بنسبة 30-50% مقارنة بالطرق التقليدية</li>
+                    <li><strong>توفير الوقت:</strong> إتمام المعاملات المالية في دقائق بدلاً من ساعات</li>
+                    <li><strong>الأمان:</strong> حماية الأموال من مخاطر حمل النقد والسرقة</li>
+                    <li><strong>الشفافية:</strong> وضوح الرسوم وأسعار الصرف قبل إتمام أي معاملة</li>
+                    <li><strong>إمكانية الوصول:</strong> خدمات متاحة 24/7 من أي مكان</li>
+                    <li><strong>التوثيق:</strong> سجل رقمي كامل لجميع المعاملات</li>
+                </ul>
+
+                <h3>على مستوى الشركات</h3>
+                <ul>
+                    <li><strong>أتمتة الرواتب:</strong> نظام آلي لصرف الأجور بضغطة زر</li>
+                    <li><strong>التقليل من التعامل النقدي:</strong> تخفيف مخاطر حفظ ونقل الأموال</li>
+                    <li><strong>تقارير مالية فورية:</strong> تتبع ومراقبة المصروفات</li>
+                    <li><strong>الامتثال:</strong> توثيق عمليات الصرف للأغراض الضريبية والرقابية</li>
+                    <li><strong>الكفاءة التشغيلية:</strong> تقليل الوقت والموارد المخصصة لإدارة الرواتب</li>
+                </ul>
+
+                <h3>على مستوى الاقتصاد الوطني</h3>
+                <ul>
+                    <li><strong>تعزيز الشمول المالي:</strong> إدخال شريحة كبيرة للنظام المالي الرسمي</li>
+                    <li><strong>مكافحة غسيل الأموال:</strong> تتبع ومراقبة التدفقات المالية</li>
+                    <li><strong>زيادة الإيرادات الضريبية:</strong> توثيق المعاملات المالية</li>
+                    <li><strong>تحفيز التحول الرقمي:</strong> دعم رؤية ليبيا للاقتصاد الرقمي</li>
+                    <li><strong>تنظيم سوق التحويلات:</strong> خلق بيئة تنافسية منظمة</li>
+                </ul>
+            </section>
+
+            <section id="الفئات-المستهدفة" class="section">
+                <h2>الفئات المستهدفة</h2>
+                
+                <h3>الفئة الأولى: العمالة الوافدة</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الشريحة</th>
+                                <th>الوصف</th>
+                                <th>الاحتياجات الرئيسية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>عمال البناء والتشييد</td>
+                                <td>القطاع الأكثر تشغيلاً للعمالة</td>
+                                <td>تحويلات دولية، استلام أجور يومية/أسبوعية</td>
+                            </tr>
+                            <tr>
+                                <td>العمالة المنزلية</td>
+                                <td>عاملات المنازل والسائقين</td>
+                                <td>تحويلات شهرية، ادخار</td>
+                            </tr>
+                            <tr>
+                                <td>الحرفيون والفنيون</td>
+                                <td>كهربائيون، سباكون، ميكانيكيون</td>
+                                <td>مدفوعات متعددة، فواتير</td>
+                            </tr>
+                            <tr>
+                                <td>عمال القطاع الزراعي</td>
+                                <td>موسميون وديمومة</td>
+                                <td>تحويلات موسمية</td>
+                            </tr>
+                            <tr>
+                                <td>موظفو المحلات والمطاعم</td>
+                                <td>قطاع الخدمات</td>
+                                <td>استلام رواتب شهرية</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>الفئة الثانية: الشركات والمؤسسات</h3>
+                <ul>
+                    <li><strong>شركات المقاولات والبناء</strong></li>
+                    <li><strong>المصانع والمنشآت الصناعية</strong></li>
+                    <li><strong>المطاعم والفنادق</strong></li>
+                    <li><strong>الشركات التجارية</strong></li>
+                    <li><strong>المستشفيات والعيادات الخاصة</strong></li>
+                    <li><strong>شركات النظافة والصيانة</strong></li>
+                </ul>
+
+                <h3>الفئة الثالثة: المواطنون الليبيون</h3>
+                <ul>
+                    <li>الباحثون عن خدمات تحويل ميسرة</li>
+                    <li>المغتربون الليبيون</li>
+                    <li>أصحاب الأعمال الصغيرة</li>
+                    <li>المستخدمون للتجارة الإلكترونية</li>
+                </ul>
+            </section>
+
+            <section id="الخدمات-والميزات" class="section">
+                <h2>الخدمات والميزات</h2>
+                
+                <h3>1. المحفظة الإلكترونية الأساسية</h3>
+                <div class="diagram">
+                    <pre>┌─────────────────────────────────────────────────────────────┐
+│                    المحفظة الإلكترونية                      │
+├─────────────────────────────────────────────────────────────┤
+│  ✓ إنشاء حساب بهوية موثقة                                  │
+│  ✓ إيداع وسحب الأموال                                      │
+│  ✓ تحويل بين المستخدمين                                    │
+│  ✓ تتبع الرصيد والمعاملات                                  │
+│  ✓ إشعارات فورية                                           │
+│  ✓ تقارير شهرية                                            │
+└─────────────────────────────────────────────────────────────┘</pre>
+                </div>
+                <p><strong>المواصفات الفنية:</strong></p>
+                <ul>
+                    <li>دعم العملات: الدينار الليبي (LYD)، الدولار الأمريكي (USD)</li>
+                    <li>حدود التعامل اليومي: حسب مستوى التحقق</li>
+                    <li>التحقق الثنائي (2FA) إلزامي</li>
+                    <li>تشفير البيانات بمعيار AES-256</li>
+                </ul>
+
+                <h3>2. نظام تحويل الأجور للشركات</h3>
+                <p><strong>للشركات:</strong></p>
+                <ul>
+                    <li>لوحة تحكم إدارية شاملة</li>
+                    <li>رفع قوائم الموظفين (CSV/Excel)</li>
+                    <li>جدولة صرف الرواتب (يومي/أسبوعي/شهري)</li>
+                    <li>تقارير مفصلة ومؤرشفة</li>
+                    <li>تكامل مع أنظمة الموارد البشرية</li>
+                </ul>
+                <p><strong>للموظفين:</strong></p>
+                <ul>
+                    <li>استلام فوري للأجور</li>
+                    <li>إشعار بالإيداع</li>
+                    <li>خيارات السحب المتعددة</li>
+                </ul>
+
+                <h3>3. التحويلات الدولية</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الخدمة</th>
+                                <th>الوصف</th>
+                                <th>الدول المستهدفة أولياً</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>تحويل بنكي</td>
+                                <td>للحسابات البنكية</td>
+                                <td>مصر، تونس، السودان، بنغلاديش، الفلبين</td>
+                            </tr>
+                            <tr>
+                                <td>تحويل للمحافظ</td>
+                                <td>للمحافظ الإلكترونية</td>
+                                <td>جميع الدول</td>
+                            </tr>
+                            <tr>
+                                <td>استلام نقدي</td>
+                                <td>عبر وكلاء معتمدين</td>
+                                <td>شبكة وكلاء دوليين</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>4. كروت الدفع المسبق (Prepaid Cards)</h3>
+                <h4>أ) الكروت المحلية</h4>
+                <ul>
+                    <li>كروت افتراضية وفعلية</li>
+                    <li>قابلة للشحن من المحفظة</li>
+                    <li>استخدام في نقاط البيع ومسحوبات ATM</li>
+                    <li>حدود قابلة للتخصيص</li>
+                </ul>
+                <h4>ب) الكروت الدولية</h4>
+                <ul>
+                    <li>Visa/Mastercard مسبقة الدفع</li>
+                    <li>صالحة للاستخدام دولياً</li>
+                    <li>مناسبة للمشتريات عبر الإنترنت</li>
+                    <li>تتطلب تحقق متقدم (KYC Level 2+)</li>
+                </ul>
+
+                <h3>5. خدمات الاشتراكات والدفع الإلكتروني</h3>
+                <ul>
+                    <li>شحن رصيد الهاتف (جميع الشبكات الليبية)</li>
+                    <li>دفع فواتير الخدمات</li>
+                    <li>شراء بطاقات الألعاب والترفيه</li>
+                    <li>اشتراكات الخدمات الرقمية (Netflix، Spotify، إلخ)</li>
+                </ul>
+
+                <h3>6. خدمات العملات الرقمية المستقرة (USDT)</h3>
+                <div class="warning-box">
+                    <p><strong>⚠️ ملاحظة هامة:</strong> هذه الخدمة تتطلب موافقات خاصة وتنظيم محدد، وستُفعّل فقط بعد الحصول على الإذن القانوني من مصرف ليبيا المركزي والجهات المختصة.</p>
+                </div>
+                <p><strong>الخدمات المقترحة (رهن الموافقة):</strong></p>
+                <div class="diagram">
+                    <pre>┌─────────────────────────────────────────────────────────────┐
+│                  خدمات USDT المستقبلية                      │
+├─────────────────────────────────────────────────────────────┤
+│  ◐ شراء USDT بالدينار الليبي                               │
+│  ◐ بيع USDT واستلام دينار ليبي                             │
+│  ◐ تحويل USDT للخارج                                       │
+│  ◐ استلام USDT من الخارج                                   │
+│  ◐ تخزين آمن للعملات الرقمية                               │
+└─────────────────────────────────────────────────────────────┘</pre>
+                </div>
+                <p><strong>القيمة المضافة للعمالة الوافدة:</strong></p>
+                <ul>
+                    <li>سرعة التحويل الدولي (دقائق بدلاً من أيام)</li>
+                    <li>تكلفة أقل للتحويلات</li>
+                    <li>تجنب تقلبات أسعار الصرف</li>
+                    <li>إمكانية الادخار بعملة مستقرة</li>
+                </ul>
+                <p><strong>الضوابط المقترحة:</strong></p>
+                <ul>
+                    <li>حدود تعامل صارمة</li>
+                    <li>تحقق KYC متقدم</li>
+                    <li>مراقبة مستمرة للمعاملات</li>
+                    <li>تقارير للجهات الرقابية</li>
+                </ul>
+            </section>
+
+            <section id="الإطار-القانوني-والامتثال-التنظيمي" class="section">
+                <h2>الإطار القانوني والامتثال التنظيمي</h2>
+                
+                <h3>المرجعية القانونية في ليبيا</h3>
+                <h4>1. القوانين والتشريعات الأساسية</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>القانون/التشريع</th>
+                                <th>الرقم</th>
+                                <th>الجهة</th>
+                                <th>الصلة بالمشروع</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>قانون المصارف</td>
+                                <td>قانون رقم (1) لسنة 2005</td>
+                                <td>مصرف ليبيا المركزي</td>
+                                <td>تنظيم الخدمات المصرفية والمالية</td>
+                            </tr>
+                            <tr>
+                                <td>قانون مكافحة غسل الأموال وتمويل الإرهاب</td>
+                                <td>قانون رقم (2) لسنة 2005</td>
+                                <td>وحدة المعلومات المالية</td>
+                                <td>الامتثال لمتطلبات AML/CFT</td>
+                            </tr>
+                            <tr>
+                                <td>قانون التجارة الإلكترونية</td>
+                                <td>-</td>
+                                <td>وزارة الاقتصاد</td>
+                                <td>تنظيم المعاملات الإلكترونية</td>
+                            </tr>
+                            <tr>
+                                <td>قانون العمل</td>
+                                <td>قانون رقم (12) لسنة 2010</td>
+                                <td>وزارة العمل</td>
+                                <td>تنظيم شؤون العمالة</td>
+                            </tr>
+                            <tr>
+                                <td>قانون النقد الأجنبي</td>
+                                <td>قرارات مصرف ليبيا المركزي</td>
+                                <td>مصرف ليبيا المركزي</td>
+                                <td>تنظيم التحويلات الدولية</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>2. الجهات الرقابية والإشرافية</h4>
+                <div class="diagram">
+                    <pre>                    ┌────────────────────────┐
+                    │   مصرف ليبيا المركزي   │
+                    │   (الجهة الرقابية      │
+                    │    الرئيسية)           │
+                    └───────────┬────────────┘
+                                │
+        ┌───────────────────────┼───────────────────────┐
+        │                       │                       │
+        ▼                       ▼                       ▼
+┌───────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│ وحدة المعلومات│     │ هيئة الرقابة   │     │ وزارة الاقتصاد  │
+│   المالية    │     │ على المصارف    │     │   والتجارة     │
+│    (FIU)      │     │                 │     │                 │
+└───────────────┘     └─────────────────┘     └─────────────────┘</pre>
+                </div>
+
+                <h3>إجراءات الحصول على التراخيص</h3>
+                <h4>المرحلة الأولى: التأسيس القانوني</h4>
+                <ol>
+                    <li><strong>تأسيس الشركة</strong>
+                        <ul>
+                            <li>تسجيل شركة ليبية مساهمة أو ذات مسؤولية محدودة</li>
+                            <li>الجهة: مصلحة التسجيل العقاري والتوثيق</li>
+                            <li>المتطلبات:
+                                <ul>
+                                    <li>رأس مال مناسب (يُحدد حسب نطاق الخدمات)</li>
+                                    <li>عقد تأسيس ونظام أساسي</li>
+                                    <li>هوية المؤسسين والمديرين</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>السجل التجاري</strong>
+                        <ul>
+                            <li>الجهة: الغرفة التجارية</li>
+                            <li>النشاط: خدمات مالية إلكترونية</li>
+                        </ul>
+                    </li>
+                    <li><strong>الرقم الضريبي</strong>
+                        <ul>
+                            <li>الجهة: مصلحة الضرائب</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>المرحلة الثانية: الترخيص المالي</h4>
+                <div class="diagram">
+                    <pre>┌─────────────────────────────────────────────────────────────────────┐
+│                    خطوات الترخيص من مصرف ليبيا المركزي              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  1. تقديم طلب رسمي ──▶ 2. دراسة الجدوى ──▶ 3. خطة العمل          │
+│                              │                                      │
+│                              ▼                                      │
+│  6. إصدار الترخيص ◀── 5. المقابلات ◀── 4. الوثائق الفنية         │
+│         المبدئي         والتقييم          والأمنية                 │
+│                              │                                      │
+│                              ▼                                      │
+│  7. فترة تجريبية ──▶ 8. التقييم النهائي ──▶ 9. الترخيص الدائم    │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘</pre>
+                </div>
+                <p><strong>المستندات المطلوبة للترخيص:</strong></p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المستند</th>
+                                <th>التفاصيل</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>خطة عمل مفصلة</td>
+                                <td>3-5 سنوات مع التوقعات المالية</td>
+                            </tr>
+                            <tr>
+                                <td>دراسة جدوى اقتصادية</td>
+                                <td>تحليل السوق والمنافسة</td>
+                            </tr>
+                            <tr>
+                                <td>السياسات والإجراءات</td>
+                                <td>AML/KYC، أمن المعلومات، حماية المستهلك</td>
+                            </tr>
+                            <tr>
+                                <td>البنية التحتية التقنية</td>
+                                <td>وصف الأنظمة والبرمجيات</td>
+                            </tr>
+                            <tr>
+                                <td>خطة استمرارية الأعمال</td>
+                                <td>BCP/DR</td>
+                            </tr>
+                            <tr>
+                                <td>الهيكل التنظيمي</td>
+                                <td>المناصب القيادية والكفاءات</td>
+                            </tr>
+                            <tr>
+                                <td>إثبات رأس المال</td>
+                                <td>شهادة إيداع مصرفية</td>
+                            </tr>
+                            <tr>
+                                <td>تقرير أمني</td>
+                                <td>فحص خلفية المؤسسين والمديرين</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>المرحلة الثالثة: التراخيص التكميلية</h4>
+                <ol>
+                    <li><strong>ترخيص خدمات التحويل</strong> (إن كان منفصلاً)</li>
+                    <li><strong>ترخيص إصدار وسائل الدفع الإلكترونية</strong></li>
+                    <li><strong>ترخيص وكيل صرافة</strong> (للتحويلات الدولية)</li>
+                    <li><strong>اعتماد من شركات البطاقات</strong> (Visa/Mastercard)</li>
+                </ol>
+
+                <h3>متطلبات الامتثال (Compliance)</h3>
+                <h4>1. اعرف عميلك (KYC - Know Your Customer)</h4>
+                <p><strong>مستويات التحقق:</strong></p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المستوى</th>
+                                <th>المتطلبات</th>
+                                <th>الحدود</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>أساسي</strong></td>
+                                <td>رقم هاتف + OTP</td>
+                                <td>رصيد أقصى: 500 د.ل، تحويل يومي: 200 د.ل</td>
+                            </tr>
+                            <tr>
+                                <td><strong>قياسي</strong></td>
+                                <td>هوية + صورة شخصية + إثبات إقامة</td>
+                                <td>رصيد أقصى: 5,000 د.ل، تحويل يومي: 2,000 د.ل</td>
+                            </tr>
+                            <tr>
+                                <td><strong>متقدم</strong></td>
+                                <td>تحقق كامل + زيارة ميدانية أو فيديو</td>
+                                <td>رصيد أقصى: 50,000 د.ل، تحويل يومي: 20,000 د.ل</td>
+                            </tr>
+                            <tr>
+                                <td><strong>مؤسسي</strong></td>
+                                <td>سجل تجاري + تفويض + بيانات مالية</td>
+                                <td>حسب الاتفاق والتقييم</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>للعمالة الوافدة - وثائق KYC:</strong></p>
+                <ul>
+                    <li>جواز السفر ساري المفعول</li>
+                    <li>تصريح الإقامة/العمل</li>
+                    <li>عقد العمل أو خطاب من الكفيل/صاحب العمل</li>
+                    <li>إثبات العنوان (فاتورة أو خطاب)</li>
+                </ul>
+
+                <h4>2. مكافحة غسل الأموال (AML)</h4>
+                <div class="diagram">
+                    <pre>┌─────────────────────────────────────────────────────────────┐
+│                    نظام AML متكامل                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    │
+│   │   الفحص    │    │   المراقبة  │    │   التقارير  │    │
+│   │ الأولي     │    │  المستمرة   │    │   الرقابية  │    │
+│   └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    │
+│          │                  │                  │            │
+│          ▼                  ▼                  ▼            │
+│   • قوائم العقوبات   • أنماط مشبوهة     • STR للـ FIU      │
+│   • PEP فحص        • تجاوز الحدود      • تقارير دورية      │
+│   • مطابقة الهوية   • تغيرات السلوك    • CTR نقدية        │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</pre>
+                </div>
+                <p><strong>الإجراءات الإلزامية:</strong></p>
+                <ul>
+                    <li>فحص العملاء ضد قوائم العقوبات (OFAC، UN، EU)</li>
+                    <li>مراقبة المعاملات بنظام آلي</li>
+                    <li>تحديد الأشخاص المعرضين سياسياً (PEP)</li>
+                    <li>الإبلاغ عن المعاملات المشبوهة (STR)</li>
+                    <li>الإبلاغ عن المعاملات النقدية الكبيرة (CTR)</li>
+                    <li>حفظ السجلات لمدة لا تقل عن 5 سنوات</li>
+                </ul>
+
+                <h4>3. حماية البيانات والخصوصية</h4>
+                <ul>
+                    <li>تشفير البيانات في النقل والتخزين</li>
+                    <li>سياسة خصوصية واضحة ومعلنة</li>
+                    <li>موافقة صريحة من المستخدمين</li>
+                    <li>حق الوصول والتصحيح والحذف</li>
+                    <li>إشعار في حالة الاختراق</li>
+                </ul>
+
+                <h4>4. حماية المستهلك</h4>
+                <ul>
+                    <li>الإفصاح الكامل عن الرسوم والعمولات</li>
+                    <li>آلية واضحة للشكاوى والتظلمات</li>
+                    <li>سياسة استرداد عادلة</li>
+                    <li>دعم فني بلغات متعددة</li>
+                    <li>توعية وتثقيف مالي</li>
+                </ul>
+            </section>
+
+            <section id="الشراكات-الاستراتيجية" class="section">
+                <h2>الشراكات الاستراتيجية</h2>
+                
+                <h3>1. الشراكات المصرفية</h3>
+                <h4>أ) المصارف التجارية الليبية</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المصرف</th>
+                                <th>نوع الشراكة</th>
+                                <th>الغرض</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>مصرف الجمهورية</td>
+                                <td>حساب ضمان + تسوية</td>
+                                <td>الحساب الرئيسي للشركة</td>
+                            </tr>
+                            <tr>
+                                <td>المصرف التجاري الوطني</td>
+                                <td>حساب عملاء</td>
+                                <td>إيداع وسحب العملاء</td>
+                            </tr>
+                            <tr>
+                                <td>مصرف الوحدة</td>
+                                <td>احتياطي</td>
+                                <td>تنويع المخاطر</td>
+                            </tr>
+                            <tr>
+                                <td>مصرف شمال أفريقيا</td>
+                                <td>تحويلات</td>
+                                <td>خبرة في التحويلات الدولية</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>متطلبات الشراكة المصرفية:</strong></p>
+                <ul>
+                    <li>فتح حسابات تشغيلية</li>
+                    <li>حساب ضمان (Escrow) لأموال العملاء</li>
+                    <li>اتفاقية مستوى الخدمة (SLA)</li>
+                    <li>تكامل تقني (API) للتحويلات الفورية</li>
+                    <li>تقارير التسوية اليومية</li>
+                </ul>
+
+                <h4>ب) المصارف المراسلة الدولية</h4>
+                <ul>
+                    <li>للتحويلات الدولية (SWIFT)</li>
+                    <li>لإصدار البطاقات الدولية</li>
+                </ul>
+
+                <h3>2. شراكات خدمات الدفع</h3>
+                <div class="diagram">
+                    <pre>┌───────────────────────────────────────────────────────────────┐
+│                    منظومة شركاء الدفع                         │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐   │
+│  │    Visa     │  │ Mastercard  │  │ شركات التحويل      │   │
+│  │             │  │             │  │ الدولية             │   │
+│  └─────────────┘  └─────────────┘  │ (Western Union,    │   │
+│                                    │  MoneyGram, إلخ)   │   │
+│  ┌─────────────┐  ┌─────────────┐  └─────────────────────┘   │
+│  │ شبكة موبي  │  │   لبيانا    │                             │
+│  │  كاش       │  │             │  ┌─────────────────────┐   │
+│  └─────────────┘  └─────────────┘  │ بوابات الدفع       │   │
+│                                    │ الإلكتروني          │   │
+│                                    └─────────────────────┘   │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘</pre>
+                </div>
+
+                <h3>3. شراكات التوزيع والوكلاء</h3>
+                <p><strong>شبكة نقاط الخدمة:</strong></p>
+                <ul>
+                    <li>محلات الصرافة المرخصة</li>
+                    <li>محلات البقالة والسوبرماركت</li>
+                    <li>محطات الوقود</li>
+                    <li>مكاتب البريد</li>
+                    <li>فروع البنوك (كشريك)</li>
+                </ul>
+                <p><strong>متطلبات الوكيل:</strong></p>
+                <ul>
+                    <li>سجل تجاري ساري</li>
+                    <li>موقع ثابت معتمد</li>
+                    <li>تدريب على النظام</li>
+                    <li>ضمان مالي</li>
+                    <li>التزام بمعايير KYC</li>
+                </ul>
+
+                <h3>4. الشراكات التقنية</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الشريك</th>
+                                <th>الخدمة</th>
+                                <th>الأهمية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>مزود البنية السحابية</td>
+                                <td>استضافة آمنة</td>
+                                <td>أساسي</td>
+                            </tr>
+                            <tr>
+                                <td>شركة أمن معلومات</td>
+                                <td>اختبارات الاختراق والمراقبة</td>
+                                <td>أساسي</td>
+                            </tr>
+                            <tr>
+                                <td>مزود SMS/OTP</td>
+                                <td>التحقق والإشعارات</td>
+                                <td>أساسي</td>
+                            </tr>
+                            <tr>
+                                <td>مزود التعرف على الهوية</td>
+                                <td>eKYC والتحقق البيومتري</td>
+                                <td>أساسي</td>
+                            </tr>
+                            <tr>
+                                <td>شركة تطوير برمجيات</td>
+                                <td>تطوير وصيانة التطبيق</td>
+                                <td>أساسي</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>5. شراكات خدمات العملات الرقمية (مستقبلية)</h3>
+                <div class="info-box">
+                    <p>هذه الشراكات مشروطة بالحصول على الموافقات التنظيمية</p>
+                </div>
+                <ul>
+                    <li><strong>مزودو السيولة:</strong> بورصات عملات رقمية مرخصة دولياً</li>
+                    <li><strong>حلول الحفظ:</strong> محافظ مؤسسية آمنة (Custodian)</li>
+                    <li><strong>شركاء الامتثال:</strong> حلول تتبع ومراقبة العملات الرقمية</li>
+                </ul>
+            </section>
+
+            <section id="المتطلبات-التنظيمية-للانطلاق" class="section">
+                <h2>المتطلبات التنظيمية للانطلاق</h2>
+                
+                <h3>قائمة المتطلبات الشاملة</h3>
+                <div class="diagram">
+                    <pre>┌─────────────────────────────────────────────────────────────────┐
+│                    مصفوفة المتطلبات للانطلاق                    │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  المتطلبات القانونية         ☐ تأسيس الشركة                    │
+│                              ☐ الترخيص من المركزي              │
+│                              ☐ التسجيل لدى وحدة المعلومات      │
+│                              ☐ عقود الشراكات المصرفية          │
+│                                                                 │
+│  المتطلبات المالية          ☐ رأس المال المطلوب                │
+│                              ☐ حساب الضمان                     │
+│                              ☐ التأمين على العمليات            │
+│                              ☐ صندوق الطوارئ                   │
+│                                                                 │
+│  المتطلبات التقنية          ☐ تطوير التطبيق                    │
+│                              ☐ البنية التحتية                  │
+│                              ☐ اختبارات الأمان                 │
+│                              ☐ شهادات الامتثال (PCI-DSS)       │
+│                                                                 │
+│  المتطلبات التشغيلية        ☐ فريق العمل                       │
+│                              ☐ مقر الشركة                      │
+│                              ☐ مركز الاتصال                    │
+│                              ☐ شبكة الوكلاء                    │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘</pre>
+                </div>
+
+                <h3>1. متطلبات رأس المال</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>البند</th>
+                                <th>المبلغ التقديري</th>
+                                <th>الملاحظات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>رأس المال المدفوع</td>
+                                <td>2-5 مليون د.ل</td>
+                                <td>حسب متطلبات المركزي</td>
+                            </tr>
+                            <tr>
+                                <td>صندوق الضمان</td>
+                                <td>500,000 د.ل</td>
+                                <td>لحماية أموال العملاء</td>
+                            </tr>
+                            <tr>
+                                <td>رأس المال العامل</td>
+                                <td>1 مليون د.ل</td>
+                                <td>للسنة الأولى</td>
+                            </tr>
+                            <tr>
+                                <td>احتياطي السيولة</td>
+                                <td>20% من الودائع</td>
+                                <td>متطلب تنظيمي</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2. المتطلبات التقنية</h3>
+                <h4>البنية التحتية</h4>
+                <div class="diagram">
+                    <pre>┌────────────────────────────────────────────────────────────────┐
+│                     الهيكل التقني المقترح                      │
+├────────────────────────────────────────────────────────────────┤
+│                                                                │
+│   ┌──────────────────────────────────────────────────────┐    │
+│   │                   طبقة العرض                          │    │
+│   │  ┌────────────┐  ┌────────────┐  ┌────────────┐      │    │
+│   │  │ تطبيق iOS │  │تطبيق Android│  │ بوابة الويب│      │    │
+│   │  └────────────┘  └────────────┘  └────────────┘      │    │
+│   └──────────────────────────────────────────────────────┘    │
+│                              │                                 │
+│   ┌──────────────────────────▼───────────────────────────┐    │
+│   │                   طبقة الـ API                        │    │
+│   │  REST APIs + GraphQL + WebSocket                     │    │
+│   └──────────────────────────────────────────────────────┘    │
+│                              │                                 │
+│   ┌──────────────────────────▼───────────────────────────┐    │
+│   │                طبقة الخدمات الأساسية                  │    │
+│   │  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐     │    │
+│   │  │المحفظة  │ │التحويلات│ │  KYC    │ │البطاقات │     │    │
+│   │  └─────────┘ └─────────┘ └─────────┘ └─────────┘     │    │
+│   └──────────────────────────────────────────────────────┘    │
+│                              │                                 │
+│   ┌──────────────────────────▼───────────────────────────┐    │
+│   │                   طبقة البيانات                       │    │
+│   │  PostgreSQL + Redis + Elasticsearch                  │    │
+│   └──────────────────────────────────────────────────────┘    │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘</pre>
+                </div>
+
+                <h4>معايير الأمان</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المعيار</th>
+                                <th>الوصف</th>
+                                <th>الأولوية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PCI-DSS</td>
+                                <td>معيار أمان بيانات البطاقات</td>
+                                <td>إلزامي</td>
+                            </tr>
+                            <tr>
+                                <td>ISO 27001</td>
+                                <td>نظام إدارة أمن المعلومات</td>
+                                <td>موصى به</td>
+                            </tr>
+                            <tr>
+                                <td>SOC 2 Type II</td>
+                                <td>تقرير ضوابط الخدمة</td>
+                                <td>موصى به</td>
+                            </tr>
+                            <tr>
+                                <td>تشفير E2E</td>
+                                <td>تشفير طرف لطرف</td>
+                                <td>إلزامي</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3. المتطلبات البشرية</h3>
+                <p><strong>الهيكل التنظيمي الأساسي:</strong></p>
+                <div class="diagram">
+                    <pre>                        ┌─────────────────┐
+                        │   المدير العام  │
+                        │    (CEO)        │
+                        └────────┬────────┘
+                                 │
+        ┌────────────────────────┼────────────────────────┐
+        │                        │                        │
+        ▼                        ▼                        ▼
+┌───────────────┐      ┌───────────────┐      ┌───────────────┐
+│ مدير العمليات │      │ المدير المالي │      │ مدير التقنية  │
+│    (COO)      │      │    (CFO)      │      │    (CTO)      │
+└───────┬───────┘      └───────┬───────┘      └───────┬───────┘
+        │                      │                      │
+   ┌────┴────┐            ┌────┴────┐            ┌────┴────┐
+   │         │            │         │            │         │
+خدمة    إدارة         محاسبة   امتثال       تطوير    أمن
+العملاء  الوكلاء      ومالية   وتدقيق      برمجيات  معلومات</pre>
+                </div>
+                <p><strong>الكفاءات المطلوبة:</strong></p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المنصب</th>
+                                <th>العدد</th>
+                                <th>المؤهلات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>مدير الامتثال</td>
+                                <td>1</td>
+                                <td>خبرة في AML/KYC، شهادات مهنية</td>
+                            </tr>
+                            <tr>
+                                <td>مدير أمن المعلومات</td>
+                                <td>1</td>
+                                <td>CISSP أو ما يعادلها</td>
+                            </tr>
+                            <tr>
+                                <td>مهندسو برمجيات</td>
+                                <td>5-8</td>
+                                <td>خبرة في FinTech</td>
+                            </tr>
+                            <tr>
+                                <td>مسؤولو خدمة العملاء</td>
+                                <td>10+</td>
+                                <td>متعددو اللغات</td>
+                            </tr>
+                            <tr>
+                                <td>مدققون داخليون</td>
+                                <td>2</td>
+                                <td>CIA أو ما يعادلها</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>4. متطلبات الموقع والمرافق</h3>
+                <ul>
+                    <li><strong>المقر الرئيسي:</strong> طرابلس (موقع مركزي)</li>
+                    <li><strong>مركز البيانات:</strong> محلي أو سحابي معتمد</li>
+                    <li><strong>مركز الاتصال:</strong> يعمل على مدار الساعة</li>
+                    <li><strong>فروع إقليمية:</strong> بنغازي، مصراتة (لاحقاً)</li>
+                </ul>
+            </section>
+
+            <section id="الهيكل-التشغيلي" class="section">
+                <h2>الهيكل التشغيلي</h2>
+                
+                <h3>1. العمليات اليومية</h3>
+                <div class="diagram">
+                    <pre>┌─────────────────────────────────────────────────────────────────┐
+│                      دورة العمليات اليومية                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   06:00 ─────▶ فتح النظام ─────▶ مراجعة التقارير الليلية       │
+│                                                                 │
+│   08:00 ─────▶ بدء العمليات ─────▶ دعم العملاء متاح            │
+│                                                                 │
+│   12:00 ─────▶ تسوية منتصف اليوم ─────▶ تقارير للإدارة         │
+│                                                                 │
+│   18:00 ─────▶ إغلاق عمليات الوكلاء ─────▶ تسوية               │
+│                                                                 │
+│   22:00 ─────▶ نسخ احتياطي ─────▶ صيانة مجدولة                 │
+│                                                                 │
+│   24:00 ─────▶ تسوية نهاية اليوم ─────▶ تقارير للمصارف         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘</pre>
+                </div>
+
+                <h3>2. إدارة السيولة</h3>
+                <ul>
+                    <li><strong>مراقبة يومية</strong> لأرصدة الحسابات</li>
+                    <li><strong>تنبيهات آلية</strong> عند انخفاض السيولة</li>
+                    <li><strong>خطوط ائتمان طوارئ</strong> مع المصارف الشريكة</li>
+                    <li><strong>توزيع السيولة</strong> على نقاط الوكلاء</li>
+                </ul>
+
+                <h3>3. خدمة العملاء</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>القناة</th>
+                                <th>التوفر</th>
+                                <th>اللغات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>تطبيق الهاتف</td>
+                                <td>24/7</td>
+                                <td>عربي، إنجليزي، فرنسي</td>
+                            </tr>
+                            <tr>
+                                <td>الهاتف</td>
+                                <td>08:00 - 22:00</td>
+                                <td>عربي، إنجليزي</td>
+                            </tr>
+                            <tr>
+                                <td>البريد الإلكتروني</td>
+                                <td>24/7</td>
+                                <td>عربي، إنجليزي، فرنسي</td>
+                            </tr>
+                            <tr>
+                                <td>WhatsApp</td>
+                                <td>08:00 - 22:00</td>
+                                <td>متعدد</td>
+                            </tr>
+                            <tr>
+                                <td>الفروع</td>
+                                <td>أوقات العمل</td>
+                                <td>حسب المنطقة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="إدارة-المخاطر" class="section">
+                <h2>إدارة المخاطر</h2>
+                
+                <h3>1. مصفوفة المخاطر</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المخاطرة</th>
+                                <th>الاحتمالية</th>
+                                <th>الأثر</th>
+                                <th>استراتيجية التخفيف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>رفض الترخيص</strong></td>
+                                <td>متوسطة</td>
+                                <td>عالي جداً</td>
+                                <td>التشاور المبكر مع المركزي، استشاريون متخصصون</td>
+                            </tr>
+                            <tr>
+                                <td><strong>اختراق أمني</strong></td>
+                                <td>متوسطة</td>
+                                <td>عالي جداً</td>
+                                <td>PCI-DSS، اختبارات اختراق، تأمين سيبراني</td>
+                            </tr>
+                            <tr>
+                                <td><strong>فشل الشراكات المصرفية</strong></td>
+                                <td>منخفضة</td>
+                                <td>عالي</td>
+                                <td>تنويع الشركاء، عقود طويلة الأجل</td>
+                            </tr>
+                            <tr>
+                                <td><strong>تقلبات العملة</strong></td>
+                                <td>عالية</td>
+                                <td>متوسط</td>
+                                <td>تحوط، هوامش أمان</td>
+                            </tr>
+                            <tr>
+                                <td><strong>منافسة شديدة</strong></td>
+                                <td>متوسطة</td>
+                                <td>متوسط</td>
+                                <td>تميز الخدمة، ولاء العملاء</td>
+                            </tr>
+                            <tr>
+                                <td><strong>مشاكل تقنية</strong></td>
+                                <td>متوسطة</td>
+                                <td>عالي</td>
+                                <td>فريق دعم، SLA مع مزودين</td>
+                            </tr>
+                            <tr>
+                                <td><strong>مخاطر تنظيمية</strong></td>
+                                <td>متوسطة</td>
+                                <td>عالي</td>
+                                <td>مراقبة مستمرة، امتثال استباقي</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2. خطة استمرارية الأعمال</h3>
+                <div class="diagram">
+                    <pre>┌─────────────────────────────────────────────────────────────────┐
+│                   خطة استمرارية الأعمال (BCP)                   │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   السيناريو                 الإجراء                 الوقت      │
+│   ─────────────────────────────────────────────────────────    │
+│   انقطاع الكهرباء     ──▶   مولدات + UPS      ──▶   فوري      │
+│   تعطل الخوادم        ──▶   failover تلقائي   ──▶   < 5 دقائق │
+│   اختراق أمني         ──▶   عزل + تحقيق       ──▶   < 1 ساعة  │
+│   كارثة طبيعية        ──▶   موقع احتياطي      ──▶   < 4 ساعات │
+│   تعطل شريك مصرفي     ──▶   شريك بديل         ──▶   < 24 ساعة │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘</pre>
+                </div>
+            </section>
+
+            <section id="خارطة-الطريق" class="section">
+                <h2>خارطة الطريق</h2>
+                
+                <h3>الجدول الزمني للتنفيذ</h3>
+                <div class="diagram">
+                    <pre>السنة 1                    السنة 2                    السنة 3
+│                          │                          │
+▼                          ▼                          ▼
+┌──────────────────────────────────────────────────────────────────┐
+│ Q1-Q2: التأسيس والتراخيص                                         │
+│   • تأسيس الشركة                                                 │
+│   • تقديم طلب الترخيص                                            │
+│   • بناء الفريق الأساسي                                          │
+├──────────────────────────────────────────────────────────────────┤
+│ Q3-Q4: التطوير والاختبار                                         │
+│   • تطوير التطبيق (MVP)                                          │
+│   • الشراكات المصرفية                                            │
+│   • اختبارات الأمان                                               │
+├──────────────────────────────────────────────────────────────────┤
+│ Q1 (السنة 2): الإطلاق                                             │
+│   • إطلاق تجريبي محدود                                           │
+│   • 1000 مستخدم أولي                                             │
+│   • تقييم وتحسين                                                 │
+├──────────────────────────────────────────────────────────────────┤
+│ Q2-Q4 (السنة 2): التوسع                                           │
+│   • إطلاق عام                                                    │
+│   • خدمات الكروت                                                 │
+│   • شبكة وكلاء واسعة                                             │
+├──────────────────────────────────────────────────────────────────┤
+│ السنة 3: النضج والتنويع                                          │
+│   • خدمات USDT (بموافقة)                                         │
+│   • التوسع الإقليمي                                              │
+│   • خدمات B2B متقدمة                                             │
+└──────────────────────────────────────────────────────────────────┘</pre>
+                </div>
+
+                <h3>مراحل الإطلاق</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المرحلة</th>
+                                <th>المدة</th>
+                                <th>الهدف</th>
+                                <th>معايير النجاح</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alpha</td>
+                                <td>2 شهر</td>
+                                <td>اختبار داخلي</td>
+                                <td>استقرار النظام</td>
+                            </tr>
+                            <tr>
+                                <td>Beta محدود</td>
+                                <td>3 شهور</td>
+                                <td>500-1000 مستخدم</td>
+                                <td>ردود فعل إيجابية</td>
+                            </tr>
+                            <tr>
+                                <td>إطلاق عام</td>
+                                <td>مستمر</td>
+                                <td>توسع تدريجي</td>
+                                <td>نمو المستخدمين</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="الملاحق" class="section">
+                <h2>الملاحق</h2>
+                
+                <h3>ملحق (أ): قائمة الوثائق المطلوبة</h3>
+                <ol>
+                    <li>عقد تأسيس الشركة</li>
+                    <li>النظام الأساسي</li>
+                    <li>خطة العمل المفصلة</li>
+                    <li>دراسة الجدوى</li>
+                    <li>السير الذاتية للإدارة التنفيذية</li>
+                    <li>سياسة مكافحة غسل الأموال</li>
+                    <li>سياسة KYC</li>
+                    <li>سياسة أمن المعلومات</li>
+                    <li>سياسة حماية البيانات</li>
+                    <li>خطة استمرارية الأعمال</li>
+                    <li>دليل إجراءات التشغيل</li>
+                </ol>
+
+                <h3>ملحق (ب): المصطلحات</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المصطلح</th>
+                                <th>التعريف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>KYC</td>
+                                <td>اعرف عميلك - إجراءات التحقق من هوية العميل</td>
+                            </tr>
+                            <tr>
+                                <td>AML</td>
+                                <td>مكافحة غسل الأموال</td>
+                            </tr>
+                            <tr>
+                                <td>CFT</td>
+                                <td>مكافحة تمويل الإرهاب</td>
+                            </tr>
+                            <tr>
+                                <td>PEP</td>
+                                <td>شخص معرض سياسياً</td>
+                            </tr>
+                            <tr>
+                                <td>STR</td>
+                                <td>تقرير المعاملات المشبوهة</td>
+                            </tr>
+                            <tr>
+                                <td>USDT</td>
+                                <td>عملة رقمية مستقرة مرتبطة بالدولار</td>
+                            </tr>
+                            <tr>
+                                <td>PCI-DSS</td>
+                                <td>معيار أمان بيانات صناعة بطاقات الدفع</td>
+                            </tr>
+                            <tr>
+                                <td>API</td>
+                                <td>واجهة برمجة التطبيقات</td>
+                            </tr>
+                            <tr>
+                                <td>SLA</td>
+                                <td>اتفاقية مستوى الخدمة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>ملحق (ج): جهات الاتصال الرئيسية</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الجهة</th>
+                                <th>العنوان</th>
+                                <th>الغرض</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>مصرف ليبيا المركزي</td>
+                                <td>طرابلس</td>
+                                <td>الترخيص والرقابة</td>
+                            </tr>
+                            <tr>
+                                <td>وحدة المعلومات المالية</td>
+                                <td>طرابلس</td>
+                                <td>الامتثال AML</td>
+                            </tr>
+                            <tr>
+                                <td>وزارة الاقتصاد</td>
+                                <td>طرابلس</td>
+                                <td>السجل التجاري</td>
+                            </tr>
+                            <tr>
+                                <td>مصلحة الضرائب</td>
+                                <td>طرابلس</td>
+                                <td>التسجيل الضريبي</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>ملحق (د): الميزانية التقديرية (السنة الأولى)</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>البند</th>
+                                <th>المبلغ (د.ل)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>رأس المال التأسيسي</td>
+                                <td>3,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>تطوير التطبيق</td>
+                                <td>500,000</td>
+                            </tr>
+                            <tr>
+                                <td>البنية التحتية</td>
+                                <td>300,000</td>
+                            </tr>
+                            <tr>
+                                <td>الرواتب والأجور</td>
+                                <td>600,000</td>
+                            </tr>
+                            <tr>
+                                <td>التسويق والإعلان</td>
+                                <td>200,000</td>
+                            </tr>
+                            <tr>
+                                <td>الإيجارات والمرافق</td>
+                                <td>150,000</td>
+                            </tr>
+                            <tr>
+                                <td>الاستشارات القانونية</td>
+                                <td>100,000</td>
+                            </tr>
+                            <tr>
+                                <td>التراخيص والرسوم</td>
+                                <td>100,000</td>
+                            </tr>
+                            <tr>
+                                <td>احتياطي طوارئ</td>
+                                <td>300,000</td>
+                            </tr>
+                            <tr style="background: #f0f9ff; font-weight: 700;">
+                                <td><strong>الإجمالي</strong></td>
+                                <td><strong>5,250,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="التوصيات-النهائية" class="section">
+                <h2>التوصيات النهائية</h2>
+                <ol>
+                    <li><strong>البدء الفوري</strong> بإجراءات تأسيس الشركة والتواصل مع مصرف ليبيا المركزي</li>
+                    <li><strong>تعيين مستشار قانوني</strong> متخصص في التشريعات المالية الليبية</li>
+                    <li><strong>بناء علاقات مبكرة</strong> مع المصارف المحتملة للشراكة</li>
+                    <li><strong>التركيز على الامتثال</strong> كأولوية قصوى منذ البداية</li>
+                    <li><strong>الاستثمار في الأمان</strong> التقني والتشغيلي</li>
+                    <li><strong>التدرج في الإطلاق</strong> لتقليل المخاطر وتحسين الخدمة</li>
+                </ol>
+            </section>
+
+            <footer class="footer">
+                <div class="info-box" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <p><strong>تم إعداد هذه الوثيقة للأغراض التخطيطية والاستشارية</strong></p>
+                    <p style="margin-top: 1rem; font-style: italic; color: #6b7280;">جميع الأرقام والتقديرات قابلة للتعديل بناءً على الدراسات التفصيلية</p>
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                        <p><strong>م. عبد المهيمن الصديق</strong></p>
+                        <p style="margin-top: 0.5rem; color: #6b7280;">ديسمبر 2025</p>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <button class="scroll-top" onclick="scrollToTop()" id="scrollTopBtn">↑</button>
+
+    <script>
+        // Toggle sidebar on mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const isOpen = sidebar.classList.contains('open');
+            
+            if (isOpen) {
+                closeSidebar();
+            } else {
+                sidebar.classList.add('open');
+                if (window.innerWidth <= 1024) {
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+
+        // Close sidebar
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Print document function
+        function printDocument() {
+            // Hide sidebar and buttons before printing
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const printBtn = document.querySelector('.print-btn');
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            
+            // Store original states
+            const sidebarOriginalDisplay = sidebar.style.display;
+            const menuToggleOriginalDisplay = menuToggle.style.display;
+            const printBtnOriginalDisplay = printBtn.style.display;
+            const scrollTopBtnOriginalDisplay = scrollTopBtn.style.display;
+            
+            // Hide elements
+            sidebar.style.display = 'none';
+            menuToggle.style.display = 'none';
+            printBtn.style.display = 'none';
+            scrollTopBtn.style.display = 'none';
+            
+            // Adjust main content for printing
+            const mainContent = document.querySelector('.main-content');
+            const originalMargin = mainContent.style.marginRight;
+            mainContent.style.marginRight = '0';
+            
+            // Wait a bit for styles to apply, then print
+            setTimeout(() => {
+                window.print();
+                
+                // Restore original states after printing
+                setTimeout(() => {
+                    sidebar.style.display = sidebarOriginalDisplay;
+                    menuToggle.style.display = menuToggleOriginalDisplay;
+                    printBtn.style.display = printBtnOriginalDisplay;
+                    scrollTopBtn.style.display = scrollTopBtnOriginalDisplay;
+                    mainContent.style.marginRight = originalMargin;
+                }, 100);
+            }, 100);
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.sidebar nav a');
+
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.sidebar nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close sidebar on mobile after clicking
+                    if (window.innerWidth <= 1024) {
+                        document.getElementById('sidebar').classList.remove('open');
+                    }
+                }
+            });
+        });
+
+        // Close sidebar when clicking outside on mobile (handled by overlay)
+        // Also close when clicking on a link
+        document.querySelectorAll('.sidebar nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 1024) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        // Close sidebar on window resize if it's open and window becomes larger
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                if (sidebar.classList.contains('open')) {
+                    closeSidebar();
+                }
+            }
+        });
+
+        // Add data-label attributes to table cells for mobile responsive display
+        function addTableLabels() {
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                const headers = table.querySelectorAll('thead th');
+                if (headers.length > 0) {
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll('td');
+                        cells.forEach((cell, index) => {
+                            if (headers[index]) {
+                                cell.setAttribute('data-label', headers[index].textContent.trim());
+                            }
+                        });
+                    });
+                }
+            });
+        }
+
+        // Initialize table labels on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            addTableLabels();
+        });
+    </script>
+</body>
+</html>
